@@ -2,6 +2,8 @@
 
 All 21 committed Revision 2A entries are accounted for once. REUSE and FIXTURE are support entries, not independent proofs. Exact objectives below come from the manifest; final outcomes retain closure qualifiers.
 
+Canonical evidence paths in this register refer to the full internal assurance repository and are preserved for provenance. They are not expected to resolve within this minimal public release.
+
 ## R01 — MULTI-ENGINE-ASSURANCE
 
 > Old accrued fees must not distort principal slippage or make an otherwise admissible removal unreachable.
