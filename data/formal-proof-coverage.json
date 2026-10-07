@@ -1,0 +1,45 @@
+{
+  "Certora_verified_property_claims": [
+    {
+      "property": "C03",
+      "scope": "4 original rules PASS",
+      "limits": "Documented fixed CONTROLLER admin pointer / production-valid prestate",
+      "source": "evidence/revision2b/15-C03-final-closure.md"
+    },
+    {
+      "property": "C09",
+      "scope": "5 original rules PASS; independent accrual reference",
+      "limits": "Valid finite state/monotone time; sequential Halmos timeout unresolved",
+      "source": "evidence/revision2b/19-C09-final-closure.md"
+    },
+    {
+      "property": "C10",
+      "scope": "5 rules PASS plus satisfy controls",
+      "limits": "Finite represented credit domains; getter cap distinct from stored/returned credit",
+      "source": "evidence/revision2b/20-C10-final-closure.md"
+    },
+    {
+      "property": "C11",
+      "scope": "5 rules PASS plus satisfy controls",
+      "limits": "Constructed unlimited/disabled states, selected key frames",
+      "source": "evidence/revision2b/21-C11-final-closure.md"
+    }
+  ],
+  "partial_claims": [
+    {
+      "property": "C04",
+      "scope": "3 rules PASS; 3 positive obligations UNRESOLVED; invariant limits retained",
+      "limits": "Positive enumerable/removal witnesses and arbitrary-state induction unresolved",
+      "source": "evidence/revision2b/18-C04-final-closure.md"
+    },
+    {
+      "property": "R04",
+      "scope": "Zero and represented-threshold scoped verification; mutant discriminated",
+      "limits": "Scoped zero/represented-threshold proofs; amount-delta equivalence timeout; bounded composition",
+      "source": "evidence/revision2b/38-R04-final-closure.md"
+    }
+  ],
+  "R02": "Feasibility BLOCKED-MODELING / UNRESOLVED despite SAT positive/generated nonvacuity, verified local binding/authorized actor/zero max; failed disabled-vs-withdrawal and enabled correspondence obligations. Undefined return on reverted counterexample is not a reachable transfer failure. Shell1/internal100/no timeout; no CALLTRACE/unaligned-memory/AUTO-havoc/sighash diagnostic. No further cloud repair or mutant run.",
+  "separate_engine_claims": "Halmos bounded/symbolic EVM paths and Forge concrete production scenes do not become universal theorem proof",
+  "proof_percentage": null
+}

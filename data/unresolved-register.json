@@ -1,0 +1,73 @@
+{
+  "blocked_property_outcomes": [
+    {
+      "property": "C02",
+      "classification": "UNKNOWN / BLOCKED-MODELING",
+      "limit": "Positive low-level call/delegatecall path blocked; no accepted mutation",
+      "source": "evidence/revision2b/11-C02-certora-closure-after-canary3.md"
+    },
+    {
+      "property": "C05",
+      "classification": "UNKNOWN / BLOCKED-MODELING",
+      "limit": "Fallback calltrace / unaligned memory; fixed local evidence only",
+      "source": "evidence/revision2b/25-C05-final-closure.md"
+    },
+    {
+      "property": "C06",
+      "classification": "UNRESOLVED / BLOCKED-MODELING",
+      "limit": "Nested Config[]/Wire[] return modeling blocks positive witness",
+      "source": "evidence/revision2b/23-C06-final-closure.md"
+    },
+    {
+      "property": "C08",
+      "classification": "UNKNOWN / BLOCKED-MODELING",
+      "limit": "Setup-success instability remains unexplained",
+      "source": "evidence/revision2b/27-C08-final-closure.md"
+    },
+    {
+      "property": "G02",
+      "classification": "UNKNOWN / BLOCKED-MODELING",
+      "limit": "Setup, loop/hash and calltrace limits; successful scene not proved",
+      "source": "evidence/revision2b/29-G02-final-closure.md"
+    }
+  ],
+  "additional_partial_or_tool_limits": [
+    {
+      "property": "C04",
+      "classification": "PARTIALLY-VERIFIED",
+      "limit": "Positive enumerable/removal witnesses and arbitrary-state induction unresolved",
+      "source": "evidence/revision2b/18-C04-final-closure.md"
+    },
+    {
+      "property": "C09",
+      "classification": "VERIFIED-WITH-DOCUMENTED-ASSUMPTIONS",
+      "limit": "Valid finite state/monotone time; sequential Halmos timeout unresolved",
+      "source": "evidence/revision2b/19-C09-final-closure.md"
+    },
+    {
+      "property": "R02",
+      "classification": "MULTI-ENGINE-ASSURANCE",
+      "limit": "Direct claim only; Certora obligations modeling-unresolved; R03 excluded",
+      "source": "evidence/revision2b/40-R02-final-closure.md"
+    },
+    {
+      "property": "R04",
+      "classification": "PARTIALLY-VERIFIED",
+      "limit": "Scoped zero/represented-threshold proofs; amount-delta equivalence timeout; bounded composition",
+      "source": "evidence/revision2b/38-R04-final-closure.md"
+    },
+    {
+      "property": "R05",
+      "classification": "MULTI-ENGINE-ASSURANCE",
+      "limit": "Bounded chunks; arithmetic reference timeout; actual fees/bridge economics unproved",
+      "source": "evidence/revision2b/42-R05-final-closure.md"
+    }
+  ],
+  "not_live_counterexamples": true,
+  "reopen_criteria": [
+    "A reachable production counterexample or live historical regression indication",
+    "A changed source executable, deployment binding or frozen capability/configuration profile",
+    "A concrete engine/model defect fix enabling a faithful unresolved obligation",
+    "An explicitly authorized new coverage requirement beyond documented domains"
+  ]
+}

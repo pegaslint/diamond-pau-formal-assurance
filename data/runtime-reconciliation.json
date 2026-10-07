@@ -1,0 +1,243 @@
+{
+  "per_property": [
+    {
+      "property": "C02",
+      "wave": 1,
+      "warnings": 3,
+      "metadata_only": 3,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/c02-halmos-warning-reconciliation.json",
+      "definition": "Exclusive METADATA-ONLY; exact executable equality is not counted again"
+    },
+    {
+      "property": "C03",
+      "wave": 1,
+      "warnings": 4,
+      "metadata_only": 4,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/c03-closure-runtime-reconciliation.json",
+      "definition": "Exclusive METADATA-ONLY; exact executable equality is not counted again"
+    },
+    {
+      "property": "C04",
+      "wave": 1,
+      "warnings": 8,
+      "metadata_only": 8,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/c04-closure-runtime-reconciliation.json",
+      "definition": "Exclusive METADATA-ONLY; exact executable equality is not counted again"
+    },
+    {
+      "property": "C09",
+      "wave": 1,
+      "warnings": 7,
+      "metadata_only": 7,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/c09-closure-runtime-reconciliation.json",
+      "definition": "Exclusive METADATA-ONLY; exact executable equality is not counted again"
+    },
+    {
+      "property": "C10",
+      "wave": 1,
+      "warnings": 6,
+      "metadata_only": 6,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/c10-closure-runtime-reconciliation.json",
+      "definition": "Exclusive METADATA-ONLY; exact executable equality is not counted again"
+    },
+    {
+      "property": "C11",
+      "wave": 1,
+      "warnings": 5,
+      "metadata_only": 5,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/c11-closure-runtime-reconciliation.json",
+      "definition": "Exclusive METADATA-ONLY; exact executable equality is not counted again"
+    },
+    {
+      "property": "C06",
+      "wave": 2,
+      "warnings": 5,
+      "metadata_only": 0,
+      "immutable_adjusted": 0,
+      "executable_exact": 5,
+      "unexplained": 0,
+      "source": "logs/revision2b/c06-closure-runtime-reconciliation.json",
+      "definition": "A full-runtime exact candidate exists per occurrence; other artifact candidates can have metadata differences. Do not count candidates as additional warnings."
+    },
+    {
+      "property": "C05",
+      "wave": 2,
+      "warnings": 2,
+      "metadata_only": 0,
+      "immutable_adjusted": 0,
+      "executable_exact": 2,
+      "unexplained": 0,
+      "source": "logs/revision2b/c05-closure-runtime-reconciliation.json",
+      "definition": "A full-runtime exact candidate exists per occurrence; other artifact candidates can have metadata differences. Do not count candidates as additional warnings."
+    },
+    {
+      "property": "C08",
+      "wave": 2,
+      "warnings": 4,
+      "metadata_only": 0,
+      "immutable_adjusted": 0,
+      "executable_exact": 4,
+      "unexplained": 0,
+      "source": "logs/revision2b/c08-closure-runtime-reconciliation.json",
+      "definition": "A full-runtime exact candidate exists per occurrence; other artifact candidates can have metadata differences. Do not count candidates as additional warnings."
+    },
+    {
+      "property": "G02",
+      "wave": 2,
+      "warnings": 9,
+      "metadata_only": 0,
+      "immutable_adjusted": 0,
+      "executable_exact": 9,
+      "unexplained": 0,
+      "source": "logs/revision2b/g02-closure-runtime-reconciliation.json",
+      "definition": "A full-runtime exact candidate exists per occurrence; other artifact candidates can have metadata differences. Do not count candidates as additional warnings."
+    },
+    {
+      "property": "G04",
+      "wave": 3,
+      "warnings": 42,
+      "metadata_only": 28,
+      "immutable_adjusted": 14,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/g04-completion/runtime-reconciliation.json"
+    },
+    {
+      "property": "C01",
+      "wave": 3,
+      "warnings": 18,
+      "metadata_only": 18,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/c01-completion/runtime-reconciliation.json"
+    },
+    {
+      "property": "G05",
+      "wave": 3,
+      "warnings": 78,
+      "metadata_only": 52,
+      "immutable_adjusted": 26,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/g05-completion/runtime-reconciliation.json"
+    },
+    {
+      "property": "G03",
+      "wave": 3,
+      "warnings": 66,
+      "metadata_only": 44,
+      "immutable_adjusted": 22,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/g03-completion/runtime-reconciliation.json"
+    },
+    {
+      "property": "R04",
+      "wave": 4,
+      "warnings": 60,
+      "metadata_only": 40,
+      "immutable_adjusted": 20,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/r04-runtime-reconciliation.json"
+    },
+    {
+      "property": "R01",
+      "wave": 4,
+      "warnings": 0,
+      "metadata_only": 0,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/r01-runtime-reconciliation.json"
+    },
+    {
+      "property": "R02",
+      "wave": 4,
+      "warnings": 0,
+      "metadata_only": 0,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/r02-runtime-reconciliation.json"
+    },
+    {
+      "property": "R03",
+      "wave": 4,
+      "warnings": 0,
+      "metadata_only": 0,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/r03-runtime-reconciliation.json"
+    },
+    {
+      "property": "R05",
+      "wave": 4,
+      "warnings": 0,
+      "metadata_only": 0,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0,
+      "source": "logs/revision2b/r05-runtime-reconciliation.json"
+    }
+  ],
+  "totals": {
+    "warnings": 317,
+    "metadata_only": 215,
+    "immutable_adjusted": 82,
+    "executable_exact": 20,
+    "unexplained": 0
+  },
+  "per_wave": {
+    "1": {
+      "warnings": 33,
+      "metadata_only": 33,
+      "immutable_adjusted": 0,
+      "executable_exact": 0,
+      "unexplained": 0
+    },
+    "2": {
+      "warnings": 20,
+      "metadata_only": 0,
+      "immutable_adjusted": 0,
+      "executable_exact": 20,
+      "unexplained": 0
+    },
+    "3": {
+      "warnings": 204,
+      "metadata_only": 142,
+      "immutable_adjusted": 62,
+      "executable_exact": 0,
+      "unexplained": 0
+    },
+    "4": {
+      "warnings": 60,
+      "metadata_only": 40,
+      "immutable_adjusted": 20,
+      "executable_exact": 0,
+      "unexplained": 0
+    }
+  },
+  "aggregation_rule": "Warning occurrences in committed accepted-run ledgers only; no raw hex fragments, candidate matches, diagnostics or unique-bytecode counts summed. Full-runtime exact candidate takes exclusive EXECUTABLE-EXACT category in Wave2; exact executable equality after metadata removal remains METADATA-ONLY elsewhere. No fresh bytecode comparison.",
+  "binding_does_not_establish_property_correctness": true
+}

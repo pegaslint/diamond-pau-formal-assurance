@@ -1,0 +1,86 @@
+{
+  "sources": [
+    "evidence/revision1b/06-grove-core-runtime-binding.md",
+    "evidence/revision1b/07-grove-routing-and-facet-binding.md",
+    "evidence/revision1b/09-grove-rate-limit-namespace.md",
+    "evidence/revision1b1/02-facet-runtime-binding.md",
+    "reports/revision1b-live-final.md"
+  ],
+  "frozen_baseline": {
+    "block": 26101248,
+    "block_hash": "0x651cdd1721e1dc15affdf46d1a8d386c7a4d21db3a721f3fe9487465bf55006a",
+    "timestamp": 1790903255,
+    "UTC": "2026-10-02 01:07:35 UTC",
+    "provider_label": "Tenderly",
+    "RPC_in_this_closeout": false
+  },
+  "canonical_source_pin": "71604ddcee14cff3561fff66eac17e749c66384b",
+  "representative_v1_13_0_commit": "5c5ad6ae174bf467081ca82342ced2bd42a5c732",
+  "core": {
+    "Controller": {
+      "address": "0xbf83F5974B932c7D842254042717D6A2706CE5eE",
+      "comparison": "Executable exact after metadata strip and declared Beacon immutable assignment",
+      "immutable_spans": [
+        {
+          "offset": 641,
+          "length": 32
+        },
+        {
+          "offset": 2351,
+          "length": 32
+        }
+      ]
+    },
+    "AccessControls": {
+      "address": "0x4F6d1704700cd494DD4cd9bF59c0C39DA1Bc9164",
+      "comparison": "Executable exact after metadata strip; no immutable adjustment"
+    },
+    "ALMProxy": {
+      "address": "0x0DcD9298e163dFD3c0B5b00F0d9093C36e40A153",
+      "comparison": "Executable exact after metadata strip; no immutable adjustment"
+    },
+    "RateLimits": {
+      "address": "0xE016Ae733A77Ba77E7907aAA749394Fc5e75C0e1",
+      "comparison": "Executable exact after metadata strip; no immutable adjustment"
+    }
+  },
+  "routing": {
+    "Beacon_integrations": 25,
+    "Grove_cached_integrations": 4,
+    "Grove_cached_names": [
+      "USDS_FACET",
+      "PSM_FACET",
+      "BASIN_FACET",
+      "UNISWAP_V3_FACET"
+    ],
+    "matched_Grove_selector_wires": 47,
+    "additional_Beacon_integrations_not_automatically_cached": 21,
+    "Beacon_223_selector_total": "Not asserted: no explicit current-context committed count located in cited binding records"
+  },
+  "namespace": {
+    "configuration_events": 190,
+    "activity_events": 100,
+    "configured_keys": 18,
+    "explained_keys": 18,
+    "missing_extra": 0,
+    "activity_keys": 11,
+    "active_never_configured": 0,
+    "key_classes": {
+      "static": 4,
+      "Basin": 6,
+      "UniV3": 8
+    },
+    "window": [
+      25302373,
+      26101248
+    ],
+    "configured_is_not_enabled": true
+  },
+  "role_stores": "Shared AccessControls, ALMProxy own roles and RateLimits own roles are distinct; Beacon governance/cache configuration must be assessed separately",
+  "limits": [
+    "Executable binding is not behavioral correctness",
+    "Representative compiler family is not a unique historical tag identity",
+    "No claim of whole-repository build reproducibility",
+    "Frozen state is not future governance behavior"
+  ]
+}

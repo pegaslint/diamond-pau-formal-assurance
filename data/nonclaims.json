@@ -1,0 +1,164 @@
+{
+  "campaign": [
+    "No claim of absence of all vulnerabilities",
+    "No universal proof of the full Diamond PAU system",
+    "No arbitrary-history theorem across all state",
+    "No exhaustive storage-frame theorem",
+    "No arbitrary-calldata theorem",
+    "No universal adversarial-callback or R03 path-completeness theorem",
+    "No arbitrary-N chunk induction theorem",
+    "No mutation completeness",
+    "No live bridge delivery/economics or actual charged-fee proof",
+    "Certora compilation does not establish correctness",
+    "Timeouts and blocked modeling remain unresolved",
+    "Deterministic endpoints do not establish real protocol economics",
+    "Source/runtime binding alone does not establish behavioral correctness"
+  ],
+  "committed_wave_nonclaims": {
+    "logs/revision2b/wave3-nonclaims.json": {
+      "shared": [
+        "No universal formal proof or composite theorem obtained by adding engine results",
+        "No exhaustive storage-frame or arbitrary-history guarantee",
+        "No arbitrary-calldata guarantee",
+        "No mutation completeness",
+        "No live economic/solvency/token/oracle/immutable semantic binding inferred from deterministic endpoints",
+        "No Certora cloud execution, satisfy/non-vacuity, original proof or mutant kill claimed",
+        "No absence-of-all-vulnerabilities conclusion from absence of a demonstrated live vulnerability"
+      ],
+      "property_specific": {
+        "G04": [
+          "No fulluint256/time/overflow/unbounded sequence proof",
+          "No accepted CVL property/non-vacuity or Certora mutant discrimination",
+          "No live protocol/deployment economics or arbitrary malicious/false-return token guarantee",
+          "Neighbor frame is fixed/bounded, not arbitrary universal state"
+        ],
+        "C01": [
+          "universal arbitrary-state/history/calldata role theorem",
+          "unbounded protocol/economic behavior",
+          "full storage frame invariant",
+          "live deployment semantic/identity binding"
+        ],
+        "G05": [
+          "not universal arbitrary-state/storage/history/calldata/immutable theorem",
+          "not universal refill liveness or arbitrary partition/factor proof",
+          "honest external economics conditional, no live semantic immutable/address identity",
+          "non-progress infinite loop not proved, model zero-tranche reverts"
+        ],
+        "G03": [
+          "not universal arbitrary state/history/calldata/decimals/AMM theorem",
+          "no live economic/token/oracle/immutable identity inference",
+          "deterministic finite principal model, no R01 accrued-fees proof",
+          "no exhaustive all-storage frame theorem",
+          "no Certora satisfiable execution/non-vacuity/universal proof"
+        ]
+      },
+      "unresolved_are_assurance_limits_not_established_exploits": true
+    },
+    "logs/revision2b/wave4-nonclaims.json": {
+      "shared": [
+        "No universal formal proof of all Wave4 properties",
+        "No arbitrary-history/calldata/endpoint/configuration theorem",
+        "No exhaustive storage frame or mutation completeness",
+        "No inference that no discovered vulnerability proves absence of all vulnerabilities",
+        "No claim compilation/typecheck equals proof or SAT witness proves substantive assertion"
+      ],
+      "property_specific": {
+        "R04": {
+          "nonclaims": [
+            "No universal _getExpectedAmounts or tick-to-ratio theorem",
+            "No universal integer delta equivalence: symbolic delta solver timeout remains unresolved",
+            "No full uint256 nonzero expected/slippage threshold theorem",
+            "No unique exact expected-amount recovery from floored decision thresholds; floor collisions possible",
+            "No arbitrary tick/history/calldata/oracle/configuration theorem",
+            "No exhaustive storage-frame or live AMM economics/liveness theorem",
+            "No composed Certora proof",
+            "No mutation completeness; one off-by-one mutant, not historical REG-004 bad-source reproduction",
+            "No inference of absence of all vulnerabilities"
+          ]
+        },
+        "R01": {
+          "nonclaims": [
+            "No universal arbitrary principal/liquidity/minimum/fee/history/configuration theorem",
+            "No new fees between staged collects or fee-growth/accounted-live-position proof",
+            "No live AMM price/solvency/economic/fee accrual validity proof",
+            "No fee-only collect liveness/position-burn/full state cleanup claim",
+            "No exhaustive storage frame or arbitrary calldata proof",
+            "No Certora local or composed theorem; compilation/cloud/non-vacuity not attempted for R01",
+            "No mutation completeness; one exact historical repair-hunk reversal in current family, not whole old deployment recreation",
+            "No inference that fees can never affect any removal"
+          ]
+        },
+        "R02": {
+          "nonclaims": [
+            "No universal localgate/formalCertora theorem",
+            "No exhaustive alternatewithdrawal/callback path safety - R03 only",
+            "No arbitraryrate-record/calldata/history/config proof",
+            "No rewardamount cap/debit: positivekey is existence only",
+            "No rewardtoken-specific gate ortokenwhitelist invented",
+            "No exhaustive storage-frame orapproval invariant",
+            "No liveFarm economic/token/endpoint/deployment proof",
+            "Onehistoricalmutant not mutation completeness",
+            "SAT success/nonvacuity not substantive obligation proof",
+            "No live original production regression inferred from Certora failure or intentionalmutant"
+          ]
+        },
+        "R03": {
+          "not_proved": [
+            "universal path completeness",
+            "adversarial callbacks/reentrancy",
+            "autonomous Farm harvesting",
+            "arbitrary histories/calldata/endpoints/configurations",
+            "all token/reward identities",
+            "deposit execution/approval behavior",
+            "exhaustive storage-frame",
+            "live protocol economics/deployment safety",
+            "mutation completeness",
+            "universal Certora theorem"
+          ],
+          "scope": "Pinned FarmFacet source enumeration and selected configured withdrawal/claim sequences with deterministic endpoint; fixed/bounded EVM evidence only"
+        },
+        "R05": {
+          "not_proved": [
+            "universal arithmetic equivalence/theorem",
+            "arbitrary partition cardinality induction",
+            "arbitrary burn limits or B0 liveness",
+            "arbitrary bridge/token behavior",
+            "actual charged fees/crosschain delivery/economics",
+            "full storage frame or arbitrary history",
+            "rate refill over time",
+            "mutation completeness"
+          ],
+          "reference_timeout": "Unresolved solver outcome, not assertion counterexample",
+          "Certora": "No compilation/cloud/theorem claimed",
+          "Layer A": "Fixed and bounded production arithmetic/reference correspondence; formal theorem unresolved/intentionally not pursued faithfully"
+        }
+      },
+      "unresolved": [
+        {
+          "property": "R04",
+          "item": "Symbolic amount-delta equivalence solverTIMEOUT97paths; full expected/liquidity/TickMath chain and fullwidth nonzero theorem unproved",
+          "category": "solver / arithmetic coverage"
+        },
+        {
+          "property": "R02",
+          "item": "Certora disabled-vs-withdraw and enabled correspondence failure cause unresolved; no CALLTRACE/unaligned-memory/AUTO-havoc/sighash diagnostic, reverted return undefined",
+          "category": "modeling unresolved; no reachable live counterexample"
+        },
+        {
+          "property": "R03",
+          "item": "Callback/adversarial endpoint and universal path completeness unproved; deposit source enumeration not execution proof",
+          "category": "coverage / deliberate scope"
+        },
+        {
+          "property": "R05",
+          "item": "Reference-only arithmetic lemma solverTIMEOUT15paths; arbitrary-N induction/progress, bridge economics/delivery/actualcharged fees unproved",
+          "category": "solver / induction / external economics"
+        }
+      ]
+    }
+  },
+  "support_entries_not_proofs": [
+    "C07",
+    "G01"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "source": "logs/revision2b/wave4-regression-register.json",
+  "committed_register": {
+    "regressions": [
+      {
+        "regression": "REG-004 / L-07 UniV3 boundary/rounding",
+        "property": "R04",
+        "historical_bad": "fc2fe7fe5991b4f84f39ec88239b5ae4ffaacc8f",
+        "repair": "7f365cc615586632e494d2d66668ff4f83d9b194",
+        "defect": "Lower boundary/rounding discrepancy",
+        "repaired_behavior": "lower-boundary comparison and roundUp delta semantics; minimum predicate separately tested",
+        "original_executable_evidence": "evidence/revision2b/38-R04-final-closure.md",
+        "discrimination_relation": "TARGETED NON-HISTORICAL MUTANT; historical boundary behavior covered, exact REG004 bad-source discrimination not established",
+        "killed_by": [
+          "Forge",
+          "Halmos",
+          "Certora for nonhistorical minimum mutant only"
+        ],
+        "limitation": "Symbolic amount-delta TIMEOUT97paths/60.75s; full expected/liquidity/TickMath equivalence and full-width nonzero theorem unproved",
+        "live_regression_established": false
+      },
+      {
+        "regression": "REG-001 / M-01 old accrued fee contamination",
+        "property": "R01",
+        "historical_bad": "84491a3b304abcf2ab58eb5cd6ec47eb03d9591d",
+        "repair": "c2d91057f6d329c1a264d7f3735a7d2aa9dc75ad",
+        "defect": "Old fees included in principal delta, false slippage rejection/liveness failure",
+        "repaired_behavior": "Pre-collect fees before balance baseline; principal-only subsequent delta",
+        "original_executable_evidence": "evidence/revision2b/39-R01-final-closure.md",
+        "discrimination_relation": "EXACT HISTORICAL REPAIR-HUNK REVERSAL in current source family; not whole old snapshot",
+        "killed_by": [
+          "Forge",
+          "Halmos"
+        ],
+        "limitation": "Fixed principal/minima/liquidity; no new fee accrual between collects; not universal fee-growth/liveness/AMM economics",
+        "live_regression_established": false
+      },
+      {
+        "regression": "REG-002 / L-10 direct claim missing distinct capability",
+        "property": "R02",
+        "historical_bad": "83a8076e89c688d14d470bd1b1abb1ec214a6c0e",
+        "repair": "0f3a1ef7acc895031ee7e9968786aa4dcfe0aaf2",
+        "defect": "Direct claim lacks distinct claim existence gate",
+        "repaired_behavior": "Exact farm claim key maxAmount>0 before getReward",
+        "original_executable_evidence": "evidence/revision2b/40-R02-final-closure.md",
+        "discrimination_relation": "FAITHFUL HISTORICAL GATE REMOVAL; old helper body equals current inlined mutant, not whole old snapshot",
+        "killed_by": [
+          "Forge",
+          "Halmos"
+        ],
+        "limitation": "Direct claim scope only, bool capability state/reward<=1000; failed enabled correspondence/disabled-vs-withdrawal obligations lack reachable live counterexample",
+        "live_regression_established": false
+      },
+      {
+        "regression": "REG-003 / L-13 withdrawal unguarded reward helper",
+        "property": "R03",
+        "historical_bad": "fc2fe7fe5991b4f84f39ec88239b5ae4ffaacc8f",
+        "repair": "e5af85a9563ace6b3449661567bb0a49379396ad",
+        "defect": "withdraw unconditionally invokes ungated reward helper",
+        "repaired_behavior": "Withdrawal does not call getReward regardless of claim state; reward lives in gated direct path",
+        "original_executable_evidence": "evidence/revision2b/41-R03-final-closure.md",
+        "discrimination_relation": "FAITHFUL HISTORICAL HELPER SEMANTICS restored in current withdrawal flow, not whole old snapshot",
+        "killed_by": [
+          "Forge",
+          "Halmos"
+        ],
+        "limitation": "Scoped source enumeration, callbacks explicitly excluded; no universal path/history theorem. IFarmFacet notice documentary defect only",
+        "live_regression_established": false
+      },
+      {
+        "regression": "REG-005 / L-11 fixed fee reuse per chunk",
+        "property": "R05",
+        "historical_bad": "fc2fe7fe5991b4f84f39ec88239b5ae4ffaacc8f",
+        "repair": "96bd13a880cb36c8becf28e31c938ed9c31ebf1a",
+        "defect": "Fixed cap reused per chunk, small-tail rejection and fee allowance inflation",
+        "repaired_behavior": "Per-domain bounded rate, per-chunk floor cap; logicalA debited once each global/domain",
+        "original_executable_evidence": "evidence/revision2b/42-R05-final-closure.md",
+        "discrimination_relation": "FAITHFUL HISTORICAL-STYLE FEE REUSE following committed plan; old API/tail guard differs",
+        "killed_by": [
+          "Forge",
+          "Halmos"
+        ],
+        "limitation": "Reference-only arithmetic TIMEOUT15paths/60.25s; arbitrary-N/progress/B0/delivery/economics/charged fees unproved; splitting may lower allowance due to floors",
+        "live_regression_established": false
+      }
+    ],
+    "scope": "All five targets received executable regression evidence and targeted mutants, but not all exact historical implementations were reintroduced. REG004 historical discrimination remains behavioral plus nonhistorical minimum mutant."
+  },
+  "fidelity_by_property": {
+    "R01": "EXACT REPAIR-HUNK REVERSAL",
+    "R02": "HISTORICAL BEHAVIOR RESTORATION",
+    "R03": "HISTORICAL BEHAVIOR RESTORATION",
+    "R04": "TARGETED NON-HISTORICAL MUTATION",
+    "R05": "HISTORICAL-STYLE MUTATION"
+  },
+  "mapping": {
+    "REG-001": "R01",
+    "REG-002": "R02",
+    "REG-003": "R03",
+    "REG-004": "R04",
+    "REG-005": "R05"
+  },
+  "live_regression_established": false
+}

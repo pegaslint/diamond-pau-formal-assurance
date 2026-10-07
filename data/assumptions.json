@@ -1,0 +1,663 @@
+{
+  "categories": [
+    "deployment/source binding",
+    "deterministic endpoints",
+    "bounded symbolic domains",
+    "selected frame observations",
+    "authorization/governance",
+    "integer widths/rounding",
+    "external protocol/economics",
+    "frozen live state",
+    "historical provenance"
+  ],
+  "committed_wave_registers": {
+    "logs/revision2b/wave1-assumptions.json": {
+      "common_to_most": [
+        {
+          "category": "source/deployment binding",
+          "applies_to": [
+            "C02",
+            "C03",
+            "C04",
+            "C09",
+            "C10",
+            "C11"
+          ],
+          "statement": "Pinned v1.13.0 family representative commit5c5ad6ae174bf467081ca82342ced2bd42a5c732; core source exported from local Git objects, dependencies from hashed existing build snapshot. Prior runtime binding is separate attribution evidence, not unique historical deployment/build provenance or a deployed-system proof.",
+          "evidence": [
+            "logs/revision2b/source-closure.json",
+            "evidence/revision2b/01-wave1-harness-map.md",
+            "evidence/revision1b/06-grove-core-runtime-binding.md"
+          ]
+        },
+        {
+          "category": "EVM/compiler/tools",
+          "applies_to": [
+            "C02",
+            "C03",
+            "C04",
+            "C09",
+            "C10",
+            "C11"
+          ],
+          "statement": "Standard EVM rollback and Solidity checked uint arithmetic; trust compiler, verifier/solver and supported Halmos constructor/prank/deal/warp/assume/call semantics. Recorded source build uses solc0.8.34,optimizer200,Cancun; later completion records Forge1.8.1,Halmos0.3.3,Certora8.19.2,OpenJDK21.0.12.1. Compilation acceptance is not proof success.",
+          "evidence": [
+            "evidence/revision2b/02-certora-model-assumptions.md",
+            "evidence/revision2b/03-halmos-model-assumptions.md",
+            "evidence/revision2b/19-C09-final-closure.md"
+          ]
+        },
+        {
+          "category": "storage/key isolation",
+          "applies_to": [
+            "C02",
+            "C03",
+            "C04",
+            "C09",
+            "C10",
+            "C11"
+          ],
+          "statement": "Real production role/state stores retained. Distinct keys where required assume ordinary collision-free Solidity storage addressing. Proxy own, RateLimits own and shared AccessControls are separate stores; shared grants do not transfer authority. No Beacon store or whole-system authority theorem follows.",
+          "evidence": [
+            "evidence/revision2b/01-wave1-harness-map.md",
+            "evidence/revision2b/15-C03-final-closure.md",
+            "evidence/revision2b/18-C04-final-closure.md"
+          ]
+        },
+        {
+          "category": "cryptographic/hash",
+          "applies_to": [
+            "C02",
+            "C03",
+            "C04",
+            "C09",
+            "C10",
+            "C11"
+          ],
+          "statement": "Storage addressing and relevant keccak keys/snapshots rely on collision freedom; no cryptographic theorem. Snapshot dependence applies only to observations using snapshots, not every rule.",
+          "evidence": [
+            "evidence/revision2b/03-halmos-model-assumptions.md",
+            "evidence/revision2b/19-C09-final-closure.md",
+            "evidence/revision2b/20-C10-final-closure.md",
+            "evidence/revision2b/21-C11-final-closure.md"
+          ]
+        },
+        {
+          "category": "boundedness/modeling",
+          "applies_to": [
+            "C02",
+            "C03",
+            "C04",
+            "C09",
+            "C10",
+            "C11"
+          ],
+          "statement": "Halmos PASS applies to its executed function, ABI domains, constructed states and supported semantics. bounds[] does not erase ABI widths or assumptions. Certora arbitrary prestates need a source-justified domain or independently established reachable structure; non-vacuity alone is not positive-path success.",
+          "evidence": [
+            "evidence/revision2b/11-C02-certora-closure-after-canary3.md",
+            "evidence/revision2b/15-C03-final-closure.md",
+            "evidence/revision2b/18-C04-final-closure.md",
+            "evidence/revision2b/19-C09-final-closure.md",
+            "evidence/revision2b/20-C10-final-closure.md",
+            "evidence/revision2b/21-C11-final-closure.md"
+          ]
+        },
+        {
+          "category": "mutation",
+          "applies_to": [
+            "C03",
+            "C04",
+            "C09",
+            "C10",
+            "C11"
+          ],
+          "statement": "One targeted kill per accepted mutation closure demonstrates discrimination, not mutation completeness. A timeout/parser/model failure is not a kill. C02 has no executed accepted mutation closure.",
+          "evidence": [
+            "evidence/revision2b/11-C02-certora-closure-after-canary3.md",
+            "evidence/revision2b/15-C03-final-closure.md",
+            "evidence/revision2b/18-C04-final-closure.md",
+            "evidence/revision2b/19-C09-final-closure.md",
+            "evidence/revision2b/20-C10-final-closure.md",
+            "evidence/revision2b/21-C11-final-closure.md"
+          ]
+        }
+      ],
+      "property_specific": {
+        "C02": {
+          "authorization": "Actual proxy role store; honest separate recorders and delegate observation slot; authorized arbitrary target economic/delegate safety excluded.",
+          "modeling": "Three Certora canaries failed low-level resolution; AUTO havoc shown for canary1 only, unaligned-memory CALLTRACE for2/3. Facts provenance includes sanitized human reports. No successful call model is assumed.",
+          "time": "Revocation-next-call bounded trace, not temporal liveness.",
+          "evidence": [
+            "evidence/revision2b/11-C02-certora-closure-after-canary3.md",
+            "evidence/revision2b/03-halmos-model-assumptions.md"
+          ]
+        },
+        "C03": {
+          "authorization": "authorizedAndRevoked requires getRoleAdmin(CONTROLLER())==DEFAULT_ADMIN_ROLE(), justified by RateLimits zero-initialized role-admin and lack of reachable writer. This is C03-specific, not a global AccessControls graph restriction.",
+          "time": "Fixed valid slope0 witnesses; current membership matters after revocation.",
+          "modeling": "Real independent role stores and selected executed Halmos scene, not complete accounting.",
+          "evidence": [
+            "evidence/revision2b/15-C03-final-closure.md",
+            "evidence/revision2b/13-C03-canary1-prestate-reconciliation.md"
+          ]
+        },
+        "C04": {
+          "authorization": "Conditional allocator lacks current admin role; legitimate governance can change role-admin graph. Frozen memberships are initialization, not forever-invariants.",
+          "modeling": "Bounded <=2-member Halmos enumerable scene; CVL independent partial invariants did not establish full reachable structure/cast safety; original Facet probe.bind is instrumentation, not a production permission.",
+          "time": "No permanent admin count or unrestricted governance timeline theorem.",
+          "evidence": [
+            "evidence/revision2b/18-C04-final-closure.md",
+            "evidence/revision2b/02-certora-model-assumptions.md"
+          ]
+        },
+        "C09": {
+          "authorization": "Authorized RateLimits CONTROLLER precondition reuses C03 scope, does not reprove authority.",
+          "time": "Finite0<max<MAX,last<=max,lastUpdated<=t and same timestamp for two debits; ordinary monotone time.",
+          "modeling": "Independent mathint oracle; Halmos uint96 max/last/debit and uint64 slope/elapsed plus fixed full-width overflow witnesses. Independent sequential check timed out.",
+          "evidence": [
+            "evidence/revision2b/19-C09-final-closure.md"
+          ]
+        },
+        "C10": {
+          "authorization": "Real authorized zero-value controller precondition; setters use actual own admin gate.",
+          "time": "Existing valid finite prestate; setter validates time at configuration, later monotone chain time retained as boundary, not a reachability induction theorem.",
+          "modeling": "uint96 slope0 credit plus fixed overflow scenes; accrual from production getter instead of second oracle; no separate C10 addition-overflow witness or universal setter-overload frame theorem.",
+          "evidence": [
+            "evidence/revision2b/20-C10-final-closure.md"
+          ]
+        },
+        "C11": {
+          "authorization": "Authorized zero-value caller for unlimited success; real role rejection checked locally to sentinel behavior, not a new C03 proof.",
+          "time": "Arbitrary unlimited timestamp fields bypass arithmetic; explicit1->3 scene asserts untouched stored time. No finite valid-time precondition imposed globally.",
+          "modeling": "Full uint256 amount domains but fixed Halmos K/J/configuration; successful setter frame constructed, nonexistent disabled state fixed; configured-disabled slope0/zero amount scene. General CVL neighbor unconstrained.",
+          "evidence": [
+            "evidence/revision2b/21-C11-final-closure.md"
+          ]
+        }
+      },
+      "policy": "Extracted retained assumptions only; no new assumption or global promotion of property-specific conditions."
+    },
+    "logs/revision2b/wave2-assumptions.json": {
+      "policy": "Reconciliation of existing recorded assumptions/limits only; no new assumption approved or inserted into specs",
+      "global": [
+        {
+          "category": "A source-family/runtime binding",
+          "statement": "Pinned production-family snapshots, compiled artifact/executable reconciliation and historical source binding; isolated scene is not fresh on-chain deployment attestation."
+        },
+        {
+          "category": "B constructor/reachable state",
+          "statement": "Forge/Halmos freshly construct concrete scenes; CVL selected real-state predicates/binders do not establish all constructor/reachability invariants."
+        },
+        {
+          "category": "C EVM/compiler semantics",
+          "statement": "Pinned Solidity0.8.34/compiler flags and recorded local tool versions; standard delegatecall/rollback/checked arithmetic semantics within modeled execution, not cross-compiler proof."
+        },
+        {
+          "category": "D role/authority",
+          "statement": "Independent actual role stores and scene actors; no role ghost substitution; isolated admins are not a universal/live Grove governance history."
+        },
+        {
+          "category": "E cache/routing",
+          "statement": "Trusted bound facets; no arbitrary malicious delegatecode isolation; original path differs by property (C05 Certora cache binder, C08 facet-local scope)."
+        },
+        {
+          "category": "F dynamic ABI",
+          "statement": "Production nested returns retained where required; unresolved modeling not assumed away; static getDispatch cannot substitute for full configs."
+        },
+        {
+          "category": "G memory/storage pointers",
+          "statement": "Original ERC7201/storage and memory paths preserved; warning/performance text alone not failure; calltrace errors limit acceptance and do not automatically prove exploitability."
+        },
+        {
+          "category": "H loop/hash",
+          "statement": "Finite actual proof settings retained; no optimistic_loop/optimistic_hashing adopted. G02 generated guard failures remain limitations, not new assumptions."
+        },
+        {
+          "category": "I Halmos fixed/bounded scene",
+          "statement": "All11 checks one path,bounds[]; specific constructor actors/tuples/amounts/wires/endpoints. No-loop-bound-hit does not mean universal input coverage."
+        },
+        {
+          "category": "J Certora symbolic/modeling",
+          "statement": "SAT sanity/satisfy interpreted with final assertion tables and diagnostics. No assume-post-state, broad prestate or critical NONDET/ghost workaround."
+        },
+        {
+          "category": "K mutation noncoverage",
+          "statement": "All four original models unstable; no mutation discrimination counted; planned mutation != executed evidence."
+        },
+        {
+          "category": "L live binding vs isolated scene",
+          "statement": "Frozen tuples/hashes are provenance. Deterministic protocol/recorder code and isolated actors do not certify live bytecode economics or total production safety."
+        }
+      ],
+      "property_specific": {
+        "C06": [
+          "Fixed two integrations/single wire; original Beacon and Controller; trusted coded facet endpoints; unrelated routing observations only within scene",
+          "getConfig still contains dynamic Wire[]; getDispatch static but wrong claim as substitute"
+        ],
+        "C05": [
+          "Pinned source/compiler/tool fidelity and documented dependency snapshot provenance",
+          "Controlled deterministic observation endpoint",
+          "Fresh fixed reachable Forge/Halmos deployment scene",
+          "Ordinary EVM delegatecall/rollback semantics",
+          "Observation namespace disjoint from Controller/shared production namespaces",
+          "No whole-system, arbitrary-size, dynamic-payload or malicious-facet guarantee",
+          "Certora scene-construction binder calls original internal cache installation; synchronization proof outside that gate",
+          "Zero value/one-word37->23167 controlled recorder; namespaced observation"
+        ],
+        "C08": [
+          "USDS subclass sets constructor-equivalent shared context from linked actual contracts; original role/budget/action/guard functions inherited unchanged",
+          "Original setVault and actual independent role grants/setters establish scene",
+          "RateLimits subclass observes through unchanged production getter; no private data replacement",
+          "Stateful deterministic token/vault mock models balance/debt-like mint/transfer counters, enforces actual proxy caller and fixed custody addresses; protocol policy/custody-model assumptions are explicit",
+          "Fixed USDS25/0/1, zero slopes and funded/unlimited neighbor; not original Controller composed execution"
+        ],
+        "G02": [
+          "Transactional deterministic token/Basin models at exact frozen tuple addresses, funded proxy/Basins;1:1 shares and valid slippage",
+          "Real original authority and budget storage, slope0, amounts25/1/0 fixed scenes",
+          "Constructor-equivalent Controller shared-context binding only; no replacement of cache/synchronization/fallback",
+          "Pinned production/dependency snapshots; dependency fallback origins documented in source-closure ledger",
+          "Both frozen USDC directions, six allowed budgets100, funded protocols and fixed25/1/0; admin-enable interval boundary",
+          "Dynamic synchronization and original fallback preserved; no live role/config history theorem"
+        ]
+      },
+      "unproven_hypotheses_not_assumptions": {
+        "C05": "Possible empty-set/position inconsistency not cause-attributed",
+        "C08": "Timestamp and enumerable-prestate causes unproven",
+        "G02": "Exact symbolic enumerable/setup and hash source causality unproved",
+        "C06": "Exact internal return copy/ABI decoding cause unproved"
+      }
+    },
+    "logs/revision2b/wave3-assumptions.json": {
+      "shared_assumptions_and_limits": [
+        "Original production source family and read-only pinned dependency copies; original Controller routing and real authorization/budgets/custody retained",
+        "Actual constructor/configuration transitions in isolated reachable scenes, not arbitrary symbolic prestates",
+        "Recorded compiler/EVM semantics and transaction rollback",
+        "Deterministic external endpoints; economic claims conditional on each declared endpoint model",
+        "Selected observation frames and finite histories; no exhaustive arbitrary storage-frame theorem",
+        "Runtime reconciliation establishes executable family only, not live deployment semantic/immutable identity",
+        "Real RateLimits exercised with zero slopes/fixed-time scenes; universal time/refill behavior not inferred",
+        "One targeted mutant per property; planned or unrun mutation classes are not coverage",
+        "Certora local compilation does not establish successful execution or proof"
+      ],
+      "property_specific": {
+        "G04": {
+          "approved_manifest_assumptions": "Allocator authorized; supported honest vault draw/wipe/transfer semantics for accounting claims; checked amounts; independently supported immutable semantics required before asserting a particular live token address. SetVault is explicit admin configuration, not an allocator privilege.",
+          "recorded_closure_assumptions": [
+            "Honest constructed combined token/vault/buffer with privileged proxy and true successful token returns",
+            "Actual debt/supply/custody state,1:1 draw/wipe semantics; no live immutable address meaning claimed",
+            "Bounded uint8 amounts<=50,burn<=mint; actual100 budgets,77 neighbor and zero slopes",
+            "Real constructors/roles/Beacon/update/Controller fallback; no direct facet substitute for actions",
+            "Pinned source family and read-only dependency snapshots; ordinary recorded compiler/EVM semantics"
+          ],
+          "bounded_domains": [
+            "uint8 mint<=50; 0<=burn<=mint",
+            "five additional fixed controls"
+          ],
+          "modeling_limits": [
+            "No fulluint256/time/overflow/unbounded sequence proof",
+            "No accepted CVL property/non-vacuity or Certora mutant discrimination",
+            "No live protocol/deployment economics or arbitrary malicious/false-return token guarantee",
+            "Neighbor frame is fixed/bounded, not arbitrary universal state"
+          ],
+          "unresolved_items": [
+            "Full arbitrary-state G04 formal assurance",
+            "Actual live token/vault semantic binding beyond historical raw runtime reconciliation",
+            "General protocol-failure/nonconforming-return/solvency and arbitrary lifecycle coverage"
+          ],
+          "source_review": "logs/revision2b/g04-completion/source-review.json",
+          "instrumentation_record": "logs/revision2b/g04-completion/instrumentation.md"
+        },
+        "C01": {
+          "approved_manifest_assumptions": "Bound trusted facets and initial linked core; membership read from real AccessControls; test neither/admin-only/allocator-only/dual-role senders; no implicit exclusion of dual-role actors.",
+          "recorded_closure_assumptions": [
+            "Bound trusted facets and initial linked core; membership read from real AccessControls; test neither/admin-only/allocator-only/dual-role senders; no implicit exclusion of dual-role actors.",
+            "Original source closure, real constructor/route setup",
+            "Executable deterministic external endpoints for reachability only",
+            "Fixed nonpayable calls and finite sequences, no arbitrary calldata or time histories",
+            "PSM factor one and reused t0 token; no fee/refill/liveness/economics conclusion",
+            "UniV3 mint branch and fixed position removal, no increase branch controls"
+          ],
+          "bounded_domains": [
+            "six fixed checks; no symbolic input parameters"
+          ],
+          "modeling_limits": [
+            "universal arbitrary-state/history/calldata role theorem",
+            "unbounded protocol/economic behavior",
+            "full storage frame invariant",
+            "live deployment semantic/identity binding"
+          ],
+          "unresolved_items": [
+            "universal arbitrary-state/history/calldata role theorem",
+            "unbounded protocol/economic behavior",
+            "full storage frame invariant",
+            "live deployment semantic/identity binding"
+          ],
+          "source_review": "logs/revision2b/c01-completion/source-review.json",
+          "instrumentation_record": "logs/revision2b/c01-completion/instrumentation.md"
+        },
+        "G05": {
+          "approved_manifest_assumptions": "Correct fee-free sell/buy and 1:1 DAI/USDS semantics for token accounting; factor>0 and represented multiplication; funded real-budget scene; refill success/progress is separately assumed for finite witness, never universal liveness. Semantic live immutable addresses require independent evidence.",
+          "recorded_closure_assumptions": [
+            "real constructors/roles/config/budget records",
+            "distinct honest fee-free tokens with real allowances and balances",
+            "1:1 funded DAI/USDS migrator and fee-free PSM buy/sell",
+            "factor1e12 and representable positive-control multiplication",
+            "funded finite0/1/2 fills, no universal progress claim",
+            "slope0 fixed-time finite budget scene"
+          ],
+          "bounded_domains": [
+            "uint8 a in 0..20 in forward/reverse checks",
+            "seven fixed checks; refill amount12, 0/1/2 refills; factor1e12"
+          ],
+          "modeling_limits": [
+            "not universal arbitrary-state/storage/history/calldata/immutable theorem",
+            "not universal refill liveness or arbitrary partition/factor proof",
+            "honest external economics conditional, no live semantic immutable/address identity",
+            "non-progress infinite loop not proved, model zero-tranche reverts"
+          ],
+          "unresolved_items": [
+            "not universal arbitrary-state/storage/history/calldata/immutable theorem",
+            "not universal refill liveness or arbitrary partition/factor proof",
+            "honest external economics conditional, no live semantic immutable/address identity",
+            "non-progress infinite loop not proved, model zero-tranche reverts"
+          ],
+          "source_review": "logs/revision2b/g05-completion/source-review.json",
+          "instrumentation_record": "logs/revision2b/g05-completion/instrumentation.md"
+        },
+        "G03": {
+          "approved_manifest_assumptions": "Frozen pool/token tuple independently evidenced; required absent keys disabled. Pure getters can derive any key; only successful guarded economic actions are restricted. Real token deltas/decimals, valid position and external atomicity; no general malicious pool solvency promise.",
+          "recorded_closure_assumptions": [
+            "actual canonical source family, real constructors/roles/routing",
+            "external endpoint code at committed tuple addresses, not live deployment code",
+            "real transfer/allowance/decimals18/6 and stored ABI-valid owned positions",
+            "TWAP0 and configured slippage1 finite conditional scene",
+            "defined principal40/60 per liquidity, funded balances, not full AMM solvency model",
+            "slope0 finite real-budget scene with exact eight keys"
+          ],
+          "bounded_domains": [
+            "uint16 requested swap input4000..10000",
+            "nine fixed checks; actual spends4000/6000; decimals18/6"
+          ],
+          "modeling_limits": [
+            "not universal arbitrary state/history/calldata/decimals/AMM theorem",
+            "no live economic/token/oracle/immutable identity inference",
+            "deterministic finite principal model, no R01 accrued-fees proof",
+            "no exhaustive all-storage frame theorem",
+            "no Certora satisfiable execution/non-vacuity/universal proof"
+          ],
+          "unresolved_items": [
+            "not universal arbitrary state/history/calldata/decimals/AMM theorem",
+            "no live economic/token/oracle/immutable identity inference",
+            "deterministic finite principal model, no R01 accrued-fees proof",
+            "no exhaustive all-storage frame theorem",
+            "no Certora satisfiable execution/non-vacuity/universal proof"
+          ],
+          "source_review": "logs/revision2b/g03-completion/source-review.json",
+          "instrumentation_record": "logs/revision2b/g03-completion/instrumentation.md"
+        }
+      },
+      "instrumentation_policy": "Scene construction/observation/transactional deterministic endpoints; no substitution of original dispatch, authorization or core accounting",
+      "no_new_property_assumptions": true
+    },
+    "logs/revision2b/wave4-assumptions.json": {
+      "shared": [
+        "Pinned source/compiler/EVM family, isolated original production execution with documented scene instrumentation",
+        "Concrete real role/configuration/RateLimits/proxy transitions in bounded composed scenes",
+        "Deterministic funded endpoints provide actual observed balances/calls, not full live protocol economics",
+        "Selected frame/rollback observations; no exhaustive storage theorem",
+        "Runtime/source reconciliation protects test executable identity within recorded scene, not live deployment binding"
+      ],
+      "property_specific": {
+        "R04": {
+          "shared": [
+            "Pinned source family and compiler/EVM semantics; source snapshots with provenance, canonical clean",
+            "Isolated formal scene, not live deployment/economic validity"
+          ],
+          "layer_a": [
+            "Zero expected: all uint256 minimum/slippage; zero msg.value",
+            "Represented threshold: expected uint128, slippage uint64 with <=1e18; all uint256 minima, zero msg.value",
+            "No production slippage<=1e18 guard inferred: it is the explicit theorem domain",
+            "Reference avoids production FullMath/LiquidityAmounts helpers; canonical TickMath ratios shared",
+            "Executed symbolic delta domain uint32 liquidity<=1000000 at ticks-10,10; larger design ceiling1e12 not executed coverage"
+          ],
+          "layer_b": [
+            "Fixed lower=-10,upper=10; targets10000/20000; slippage0.99e18",
+            "Real Controller/Beacon/config/roles/RateLimits/ALMProxy/original facet/library transitions",
+            "Deterministic pool/TWAP and manager endpoints; stateful18-decimal token transfers",
+            "Manager is an observation endpoint, not a full AMM/position/solvency model",
+            "Selected frame/rollback snapshots only"
+          ]
+        },
+        "R01": {
+          "shared": [
+            "Pinned production/source family and0.8.34/Cancun EVM/compiler semantics",
+            "Original Controller/facet execution and real roles/RateLimits/ALMProxy; isolated scene not live fork"
+          ],
+          "position_endpoint": [
+            "Reachable mint creates100-liquidity position owned by proxy with correct token0/token1/fee",
+            "Finite output witness2000/3000 native units for selected requests50or100; not a full liquidity-to-price/AMM model",
+            "Old fees arise as funded reserve-backed owed claims; actual transfers, not recorder-only collection",
+            "No newly accrued fees between the two staged collects, no fee-on-transfer/rebasing tokens",
+            "Endpoint honors minimums, deadline, position liquidity/ownership and collectible widths; adds principal to owed and clears collect"
+          ],
+          "domain": [
+            "Symbolic fee0/fee1 uint16 each0..10000; fixed principal,minima,liquidity and legal0.99e18 slippage",
+            "Fixed large fees1e6 each; native token018decimals/token16decimals; enough budgets and reserves1e9",
+            "Amounts/additions/intermediate checked multiplication fit widths; owed fitsuint128"
+          ],
+          "paired_scenes": [
+            "Fresh isomorphic scenes with corresponding actor roles; sequential reset of fixed deterministic endpoints before next scene; no interleaved access to reset old scene"
+          ],
+          "observation": [
+            "Selected state hash includes position/counters/owed, token custody/manager/router balances/allowances, all8configured budgets plus sentinel, dispatch/role/config; not exhaustive storage theorem",
+            "Fee event outputs asserted against actual token deltas and first/second collected principal/fees"
+          ]
+        },
+        "R02": {
+          "source_runtime": [
+            "Pinned sourcefamily/0.8.34/Cancun; copiedoriginalprimitivesbyteidentical, sourceclosure ledger",
+            "Isolatedcontracts rather than livefork; Farmhistoricalonly Grove relevance"
+          ],
+          "composed": [
+            "ActualControllerfallback/delegatecall, realBeaconsetup, FarmFacet androles/rates/ALMProxy",
+            "Sceneactor hasreal allocator+admin; afterallocatorrevocationremainingadmin doesnotauthorize claim",
+            "Stateful fundedtoken and deterministic Farm getReward; actual balance transfer/counter/caller",
+            "Token/farm construction/configmethods are fixture setup, not hardened/liveFarm policy"
+          ],
+          "domains": [
+            "Symbolic rewarduint16<=1000; claimmax0/1 andwithdrawmax0/100, neighboringdeposit100",
+            "Token supply10000 and finitepositive transfer; nofee-on-transfer/rebase/adversarialtoken/economics theorem"
+          ],
+          "LayerA_local": [
+            "Freshnamespaced sharedstorage, guardstatus0, actual role/rate mappings andproxy binder; nooverride ofclaimReward",
+            "No universalCertora gate theorem after twofailed obligations"
+          ],
+          "observations": [
+            "Selectedfarm/proxyrewardbalances, endpointcounter/lastcaller/amount/fail, fourcapabilityrecords, selectedroute",
+            "Noclaim approvals invoked; noapprovalstate in minimal tokenfixture, not universalapproval preservation",
+            "Rewardtoken selected viafarm.rewardsToken; keyfarmbound, no rewardtokenwhitelist claim"
+          ]
+        },
+        "R03": {
+          "shared": [
+            "source family / pinned compiler0.8.34 optimizer200 Cancun",
+            "real Controller/Beacon setup and original delegate routing",
+            "real AccessControls/RateLimits/ALMProxy roles/storage",
+            "funded deterministic principal-only Farm and simple balance token",
+            "selected snapshots only; no exhaustive frame",
+            "bounded symbolic inputs0..1000 and claimmax0/1",
+            "callbacks explicitly excluded in minimal historical witness",
+            "not live deployment/economic binding"
+          ],
+          "documentation_defect": {
+            "classification": "STALE-DOCUMENTATION",
+            "path": "sources/diamond-pau/src/facets/farm/IFarmFacet.sol:9",
+            "analysis": "logs/revision2b/r03-completion/semantic-conflict-analysis.json",
+            "resolution": "Human accepted original implementation/May11 repair/regression test/manifest authority; no runtime defect or source repair"
+          },
+          "instrumentation": [
+            "Scene constructs using original constructors/admin transitions; only claim and withdraw selectors wired",
+            "Farm endpoint records selectors/counters and transfers real fixture token balances; not capability gate",
+            "Stateful failure after withdrawal token transfer for rollback",
+            "Public fixture fund/configure are construction conveniences, not protocol security properties"
+          ],
+          "approval_scope": "withdraw/claim use no approval; deposit approval flow not exercised"
+        },
+        "R05": {
+          "source_binding": [
+            "original sources copied from committed R03 plus canonical CCTPFacet/ICCTPFacet; no production edits",
+            "compiler0.8.34 optimizer200 Cancun",
+            "actual immutable cctp/usdc assigned by original constructor"
+          ],
+          "scene": [
+            "real Controller/Beacon roles/config update; original fallback delegates",
+            "real RateLimits with slope0 and exact global/domain keys",
+            "real ALMProxy token approve/bridge call",
+            "deterministic stateful bridge records parameters/counters; actual fixture transferFrom balances and allowances",
+            "funded custody10000, configured recipientbytes32(domain+1), min0 max9999"
+          ],
+          "arithmetic": [
+            "chunk*r must fit uint256 for production success",
+            "uint64 rate restricted by configured uint32 min/max<10000",
+            "B>0 for positive amount progress; B0 outside success domain not silently loop-assumed",
+            "reference quotient/remainder formula; no helper copying called a production theorem",
+            "finite production bounds A<=30,B10,r<=9999, at most3chunks Halmos bound4"
+          ],
+          "external_economics": [
+            "Bridge cap is permitted maxFee argument, not actual charged fee",
+            "tokens move to deterministic bridge fixture, not live burn/delivery",
+            "no economic solvency/crosschain finality guarantee"
+          ],
+          "limits": [
+            "standalone reference two-piece lemma TIMEOUT, no theorem",
+            "arbitrary-N chunk induction/progress not established",
+            "selected balances/approvals/records rollback only",
+            "one historical semantic mutant, not completeness"
+          ]
+        }
+      },
+      "bounded_domains": {
+        "R04": "Zero expected all uint256 min/slippage msg.value0; represented expecteduint128/slippageuint64<=1e18/minuint256. Composedticks[-11,-10,-9,0,9,10,11], fixedtargets10000/20000/slip0.99e18. Delta timeoutdomain uint32liquidity<=1e6 at ticks-10,10.",
+        "R01": "uint16 fee0/fee1 each0..10000, fixedprincipal2000/3000/min1980/2970/liquidity50; fixedlargefees1e6; no newly accrued fees between collects",
+        "R02": "boolclaim/withdraw states,max0/1 and0/100,rewarduint16<=1000; local binder test not theorem",
+        "R03": "boolclaimmax0/1,withdraw/rewarduint16<=1000,withdrawbudget1000; principal-only Farm; callbacks excluded",
+        "R05": "productionAuint8<=30,B10,ruint16<=9999,up to3chunks,loop4; reference-only x/yuint8 andr<=9999 timeout60.25s"
+      },
+      "instrumentation_and_endpoint_limits": {
+        "R04": "Original Controller/Beacon/UniV3Facet, _getExpectedAmounts/_validateMinAmount, original math/TWAP and deterministic manager; Symbolic amount-delta TIMEOUT97paths/60.75s; full expected/liquidity/TickMath equivalence and full-width nonzero theorem unproved",
+        "R01": "Original Controller/UniV3 removal/ALMProxy/RateLimits and funded stateful manager/token endpoint; Fixed principal/minima/liquidity; no new fee accrual between collects; not universal fee-growth/liveness/AMM economics",
+        "R02": "Original Controller/FarmFacet direct claim and real roles/rates/proxy, funded reward token/Farm; Direct claim scope only, bool capability state/reward<=1000; failed enabled correspondence/disabled-vs-withdrawal obligations lack reachable live counterexample",
+        "R03": "Original Controller/FarmFacet.withdraw/proxy principal-only Farm, exact selector/counter observations; Scoped source enumeration, callbacks explicitly excluded; no universal path/history theorem. IFarmFacet notice documentary defect only",
+        "R05": "Original Controller/CCTPFacet.transfer loop/real budgets/ALMProxy approvals/stateful depositForBurn endpoint; Reference-only arithmetic TIMEOUT15paths/60.25s; arbitrary-N/progress/B0/delivery/economics/charged fees unproved; splitting may lower allowance due to floors"
+      }
+    }
+  },
+  "property_specific": {
+    "R01": {
+      "manifest_preconditions": "Valid owned position; positive removable liquidity; valid pool/minima/deadline; enough principal withdrawal capacity; non-reverting correct external calls; no new fees between staged collects in the minimal witness; amounts and additions fit integer widths.",
+      "retained_limit": "Bounded old fees; no new fees between paired collects; selected frames",
+      "source": "evidence/revision2b/39-R01-final-closure.md"
+    },
+    "R02": {
+      "manifest_preconditions": "Real selected-key configuration; valid farm with a reachable non-reverting getReward; allocator role only or allocator+admin handled explicitly; other keys need not be zero.",
+      "retained_limit": "Direct claim only; Certora obligations modeling-unresolved; R03 excluded",
+      "source": "evidence/revision2b/40-R02-final-closure.md"
+    },
+    "R03": {
+      "manifest_preconditions": "Farm withdraw returns staking principal without autonomously harvesting reward; callbacks either adversarial and modeled or explicitly excluded in minimal historical witness; valid funded farm and withdraw budget.",
+      "retained_limit": "Enumerated withdrawal traces only; adversarial callback completeness unproved; stale notice",
+      "source": "evidence/revision2b/41-R03-final-closure.md"
+    },
+    "R04": {
+      "manifest_preconditions": "Valid tick domain/lower<upper; usable TWAP observation; legal slippage ratio; reference uses specified integer widths and explicit rounding; no circular assumption equating implementation output to reference.",
+      "retained_limit": "Scoped zero/represented-threshold proofs; amount-delta equivalence timeout; bounded composition",
+      "source": "evidence/revision2b/38-R04-final-closure.md"
+    },
+    "R05": {
+      "manifest_preconditions": "B>0 for progress; valid recipient; minRate<=r<=maxRate<10000; enough both budgets; multiplication/addition widths safe for success witness; bridge/token actions succeed; unbounded theorem requires induction rather than optimistic finite loops.",
+      "retained_limit": "Bounded chunks; arithmetic reference timeout; actual fees/bridge economics unproved",
+      "source": "evidence/revision2b/42-R05-final-closure.md"
+    },
+    "C01": {
+      "manifest_preconditions": "Bound trusted facets and initial linked core; membership read from real AccessControls; test neither/admin-only/allocator-only/dual-role senders; no implicit exclusion of dual-role actors.",
+      "retained_limit": "Selected role/entrypoint matrix, not arbitrary calldata/history",
+      "source": "evidence/revision2b/33-C01-final-closure.md"
+    },
+    "C02": {
+      "manifest_preconditions": "Use actual proxy AccessControl, not shared AccessControls ghost; authorized controller may execute arbitrary allowed-by-proxy targets; governance/controller compromise is outside this access gate.",
+      "retained_limit": "Positive low-level call/delegatecall path blocked; no accepted mutation",
+      "source": "evidence/revision2b/11-C02-certora-closure-after-canary3.md"
+    },
+    "C03": {
+      "manifest_preconditions": "Real RateLimits AccessControl and state; distinction between proxy/RateLimits/shared roles; trusted admins may legitimately configure.",
+      "retained_limit": "Documented fixed CONTROLLER admin pointer / production-valid prestate",
+      "source": "evidence/revision2b/15-C03-final-closure.md"
+    },
+    "C04": {
+      "manifest_preconditions": "Frozen memberships are initial conditions, not invariants against legitimate governance changes. An allocator-only actor lacks every necessary role-admin capability. Governance may explicitly change admin graph; model those transitions separately.",
+      "retained_limit": "Positive enumerable/removal witnesses and arbitrary-state induction unresolved",
+      "source": "evidence/revision2b/18-C04-final-closure.md"
+    },
+    "C05": {
+      "manifest_preconditions": "Original runtime-bound core source; hardcoded core entrypoints addressed separately from fallback; no arbitrary malicious facet promise. Receiver can record complete delegatecall context and chosen return/revert bytes.",
+      "retained_limit": "Fallback calltrace / unaligned memory; fixed local evidence only",
+      "source": "evidence/revision2b/25-C05-final-closure.md"
+    },
+    "C06": {
+      "manifest_preconditions": "Bound installed facets do not overwrite Controller routing storage; compare traces with identical Controller pre-state and differing Beacon-only updates. Trusted admin may add integrations explicitly. No theorem about arbitrary malicious delegatecode.",
+      "retained_limit": "Nested Config[]/Wire[] return modeling blocks positive witness",
+      "source": "evidence/revision2b/23-C06-final-closure.md"
+    },
+    "C07": {
+      "manifest_preconditions": "Use actual Beacon role storage; structurally decodable configs; include empty/new sets and legal authorized success cases. Trusted admin code choice itself is outside this authorization property.",
+      "retained_limit": "Existing spec availability is not executed proof; inherited structural/loop/empty-set modeling limits require review",
+      "source": "evidence/revision2a/01-property-manifest.md:465"
+    },
+    "C08": {
+      "manifest_preconditions": "Distinguish mandatory consumption keys from optional credit keys. Use real RateLimits; committed final EVM effects only. Farm existence-only claim is R02; zero action amounts are included for mandatory maxAmount gate.",
+      "retained_limit": "Setup-success instability remains unexplained",
+      "source": "evidence/revision2b/27-C08-final-closure.md"
+    },
+    "C09": {
+      "manifest_preconditions": "0<maxAmount<UINT_MAX; lastAmount<=maxAmount and lastUpdated<=timestamp; checked slope*elapsed+lastAmount representable for successful reference; configuration/admin calls are distinct transitions.",
+      "retained_limit": "Valid finite state/monotone time; sequential Halmos timeout unresolved",
+      "source": "evidence/revision2b/19-C09-final-closure.md"
+    },
+    "C10": {
+      "manifest_preconditions": "Finite configured key and valid timestamp; integer-overflow behavior retained. Mathematical saturation is expected only when checked addition/accrual is representable.",
+      "retained_limit": "Finite represented credit domains; getter cap distinct from stored/returned credit",
+      "source": "evidence/revision2b/20-C10-final-closure.md"
+    },
+    "C11": {
+      "manifest_preconditions": "Key equality is explicit; analyze same/different keys separately. Unlimited can be set through authorized general setters as well as wrapper; hash collision exclusion is a declared modeling assumption, not a cryptographic proof.",
+      "retained_limit": "Constructed unlimited/disabled states, selected key frames",
+      "source": "evidence/revision2b/21-C11-final-closure.md"
+    },
+    "G01": {
+      "manifest_preconditions": "Use only existing frozen evidence window 25302373..26101248; distinguish ever-configured from currently enabled maxAmount>0; history completeness is an evidence assumption, not a solver theorem. Future authorized configuration is a profile transition requiring review.",
+      "retained_limit": "Finite frozen history completeness; configured differs from enabled; future governance state excluded",
+      "source": "evidence/revision2a/01-property-manifest.md:655"
+    },
+    "G02": {
+      "manifest_preconditions": "Initial excluded keys have maxAmount=0; any preceding authorized setter enabling them is explicitly excluded from the disabled interval. Correct ABI key order is (LIMIT_BASIN_DEPOSIT,asset,basin). Real RateLimits and transactional token/Basin model.",
+      "retained_limit": "Setup, loop/hash and calltrace limits; successful scene not proved",
+      "source": "evidence/revision2b/29-G02-final-closure.md"
+    },
+    "G03": {
+      "manifest_preconditions": "Frozen pool/token tuple independently evidenced; required absent keys disabled. Pure getters can derive any key; only successful guarded economic actions are restricted. Real token deltas/decimals, valid position and external atomicity; no general malicious pool solvency promise.",
+      "retained_limit": "Bounded UniV3 principal budgets; accrued fees excluded",
+      "source": "evidence/revision2b/35-G03-final-closure.md"
+    },
+    "G04": {
+      "manifest_preconditions": "Allocator authorized; supported honest vault draw/wipe/transfer semantics for accounting claims; checked amounts; independently supported immutable semantics required before asserting a particular live token address. SetVault is explicit admin configuration, not an allocator privilege.",
+      "retained_limit": "Fixed scenes, bounded amounts, deterministic vault; no live economics",
+      "source": "evidence/revision2b/32-G04-final-closure.md"
+    },
+    "G05": {
+      "manifest_preconditions": "Correct fee-free sell/buy and 1:1 DAI/USDS semantics for token accounting; factor>0 and represented multiplication; funded real-budget scene; refill success/progress is separately assumed for finite witness, never universal liveness. Semantic live immutable addresses require independent evidence.",
+      "retained_limit": "Bounded USDC units and factor1e12; no arbitrary-factor theorem",
+      "source": "evidence/revision2b/34-G05-final-closure.md"
+    }
+  },
+  "new_assumptions_added": false
+}
