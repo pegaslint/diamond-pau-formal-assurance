@@ -10,7 +10,7 @@ The manifest contains 21 entries: 19 property results, C07 REUSE and G01 FIXTURE
 
 MULTI-ENGINE-ASSURANCE means complementary concrete production-path execution and bounded symbolic/fixed EVM path evidence, with documented scope and targeted defect discrimination; it is not a universal theorem. Counts measure recorded results and are not a proof percentage.
 
-The exact 21 objectives, priorities, source lines, domains, authoritative engine records and full limitations are in [property-register.json](../../logs/revision2b/final/property-register.json) and [property-register.md](../../logs/revision2b/final/property-register.md). This matrix retains exact manifest objectives; compact engine descriptions never supersede the cited closures.
+The exact 21 objectives, priorities, source lines, domains, authoritative engine records and full limitations are in [property-register.json](../../data/property-register.json) and [property-register.md](../../reports/PROPERTY-REGISTER.md). This matrix retains exact manifest objectives; compact engine descriptions never supersede the cited closures.
 
 | Property | Exact objective | Priority / wave | Forge | Halmos | Certora | Classification | Main limitation | Live established? |
 |---|---|---|---|---|---|---|---|---|

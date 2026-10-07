@@ -36,14 +36,14 @@ Runtime/source reconciliation completed with **zero unexplained executable misma
 Recommended order:
 
 1. [Final Assurance Report](reports/FINAL-ASSURANCE-REPORT.md) — Full campaign synthesis, classifications, engine boundaries, deployment binding, and closeout conclusions.
-2. [Property Results](reports/PROPERTY-RESULTS.md) — Human-readable 21-property matrix, with each objective, committed result, evidence, and main limitation.
+2. [Property Results](reports/PROPERTY-RESULTS.md) — Simplified human-readable overview of all 21 entries, with objectives, committed results, evidence, and main limitations. The [Property Register](reports/PROPERTY-REGISTER.md) preserves the exact canonical-style technical register: objectives, priorities, assigned waves, classifications, and retained limits; its [machine-readable equivalent](data/property-register.json) also includes detailed engine records.
 3. [Historical Regressions](reports/HISTORICAL-REGRESSIONS.md) — Five regression classes, repairs, executable challenges, and differences in mutation fidelity.
 4. [Formal Proof Coverage](reports/FORMAL-PROOF-COVERAGE.md) — What was genuinely formally proved, partially proved, bounded, or blocked.
 5. [Assumptions and Limits](reports/ASSUMPTIONS-AND-LIMITS.md) — Scope boundaries, property-specific assumptions, economic limits, and nonclaims.
 
-[data/](data/) contains machine-readable structured evidence, including the [property matrix](data/property-matrix.json), [regression register](data/regression-register.json), [formal coverage](data/formal-proof-coverage.json), [unresolved register](data/unresolved-register.json), and [nonclaims](data/nonclaims.json).
+[data/](data/) contains machine-readable structured evidence, including the [property matrix](data/property-matrix.json), [final property register](data/property-register.json), [regression register](data/regression-register.json), [formal coverage](data/formal-proof-coverage.json), [unresolved register](data/unresolved-register.json), and [nonclaims](data/nonclaims.json).
 
-[provenance/](provenance/) contains canonical campaign provenance/hash material. These records retain references into the full assurance repository; this minimal export does not contain every referenced artifact. The final synthesis likewise retains internal evidence references. The human-readable summaries provide a reading path within this export.
+[provenance/](provenance/) contains canonical campaign provenance/hash material. These records retain references into the full assurance repository; this minimal export does not contain every referenced artifact. The final synthesis and both property-register files likewise retain canonical evidence paths (including manifest line references) into the full assurance repository. These are provenance references, not public-export navigation links; the referenced artifacts are omitted here. The property-register files are byte-for-byte copies of the canonical final registers. The human-readable summaries provide a reading path within this export.
 
 [PUBLIC-RELEASE-SHA256SUMS.txt](PUBLIC-RELEASE-SHA256SUMS.txt) is the included checksum manifest. Its current path and coverage limitations are explained under integrity verification below.
 
@@ -92,7 +92,7 @@ The public release includes [PUBLIC-RELEASE-SHA256SUMS.txt](PUBLIC-RELEASE-SHA25
 shasum -a 256 -c PUBLIC-RELEASE-SHA256SUMS.txt
 ```
 
-PUBLIC-RELEASE-SHA256SUMS.txt authenticates the 17 published content files. The manifest itself is intentionally excluded from self-hashing. All 17 content files currently verify successfully with the command above.
+PUBLIC-RELEASE-SHA256SUMS.txt authenticates the 19 published content files. The manifest itself is intentionally excluded from self-hashing. All 19 content files currently verify successfully with the command above.
 
 [provenance/final-synthesis-run-hashes.json](provenance/final-synthesis-run-hashes.json) is the canonical campaign provenance ledger. It references evidence from the full internal assurance repository, not only this minimal public export. Campaign provenance and public-export file integrity are distinct: the former records the underlying evidence, while a release checksum manifest verifies the bytes of its listed published files against recorded digests. Neither establishes behavioral correctness.
 
