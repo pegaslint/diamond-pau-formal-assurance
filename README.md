@@ -92,7 +92,7 @@ The public release includes [PUBLIC-RELEASE-SHA256SUMS.txt](PUBLIC-RELEASE-SHA25
 shasum -a 256 -c PUBLIC-RELEASE-SHA256SUMS.txt
 ```
 
-**Current manifest limitation:** the included manifest lists ten `final/` paths that are absent from this minimal export; the structured registers are published under `data/`, with the campaign ledger under `provenance/`. Its listed synthesis file under `evidence/` verifies successfully, but the command reports ten missing files. The manifest also does not list this README or the newly written human-readable summaries. It cannot currently verify the public release as laid out here; it has been preserved unchanged. A manifest reconciled to the actual release paths and contents is needed for that purpose.
+PUBLIC-RELEASE-SHA256SUMS.txt authenticates the 17 published content files. The manifest itself is intentionally excluded from self-hashing. All 17 content files currently verify successfully with the command above.
 
 [provenance/final-synthesis-run-hashes.json](provenance/final-synthesis-run-hashes.json) is the canonical campaign provenance ledger. It references evidence from the full internal assurance repository, not only this minimal public export. Campaign provenance and public-export file integrity are distinct: the former records the underlying evidence, while a release checksum manifest verifies the bytes of its listed published files against recorded digests. Neither establishes behavioral correctness.
 
